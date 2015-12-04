@@ -1,0 +1,35 @@
+//Tarea: Juego de Memoria by Yéssica Contreras F 
+
+import UIKit
+
+// generación de rango de 0 a 100 usando ciclo for para las iteraciones
+for i in 0...100{
+    //print(i)
+    
+    var r = i % 5
+
+    
+    //Regla para saber si el número es divisible entre 5
+    if r == 0{
+        //Interpolación de variables
+        print("\(i) #Bingo!!! ")
+    }
+    
+    var r2 = i % 2
+    
+    // Regla para saber si el número es par o impar
+    if r2 == 0{
+        //Interpolación de variables
+        print("\(i) #Par ")
+    }else{
+        //Interpolación de variables
+        print("\(i) #Impar ")
+    }
+    
+    //Regla para saber si el número esta dentro del rango de 30 a 40
+    if i >= 30 && i <= 40{
+        //Interpolación de variables
+        print("\(i) #Viva Swift ")
+    }
+    
+}
