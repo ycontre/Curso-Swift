@@ -1,0 +1,76 @@
+import UIKit
+
+enum Velocidades : Int{
+    
+    case Apagado = 0, VelocidadBaja = 20, VelocidadMedia = 50, VelocidadAlta = 120, velInicial
+    
+    
+    func velocidadInicial ( ) -> Int{
+       Velocidades.velInicial
+    }
+    
+    init(){
+        self = .velInicial
+    }
+    
+}
+
+var nuevaVelocidad = Velocidades()
+nuevaVelocidad.rawValue
+nuevaVelocidad.velocidadInicial()
+
+
+
+class Auto {
+    
+    //atributos
+    
+    var velocidad = Velocidades()
+    
+    //*funcion de inicializador para dar valores a los atributos
+    
+    init ( Apagado : Int){
+        self.Apagado = 0
+    }
+    
+    //función actualiza uno de mis atributos pero no retorna nada
+    func cambioDeVelocidad(var actual : Int, velocidadEnCadena : String ){
+        if actual == 0 {
+            print(actual)
+            print("Apagado")
+            return actual=20
+        }
+        
+        if actual == 20 {
+            print(actual)
+            print("Velocidad baja")
+            return actual=50
+        }
+        
+        if actual == 50 {
+            print(actual)
+            print("Velocidad media")
+            return actual=120
+        }
+        
+        if actual == 120 {
+            print(actual)
+            print("Velocidad alta")
+            return actual=50
+        }
+    }
+}
+
+
+var auto = Auto(Apagado: 0)
+
+
+
+var vueltas = 1...20
+
+for ciclo in vueltas{
+    
+    Auto.cambioDeVelocidad(actual:0)
+    
+}
+
