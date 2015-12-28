@@ -2,75 +2,54 @@ import UIKit
 
 enum Velocidades : Int{
     
-    case Apagado = 0, VelocidadBaja = 20, VelocidadMedia = 50, VelocidadAlta = 120, velInicial
+    case Apagado = 0, VelocidadBaja = 20, VelocidadMedia = 50, VelocidadAlta = 120, velocidadInicial
     
-    
-    func velocidadInicial ( ) -> Int{
-       Velocidades.velInicial
-    }
-    
-    init(){
-        self = .velInicial
+    //Declaramos el inicializador que recibe Velocidad
+    init (velocidadInicial : Velocidades) {
+        self = velocidadInicial
     }
     
 }
-
-var nuevaVelocidad = Velocidades()
-nuevaVelocidad.rawValue
-nuevaVelocidad.velocidadInicial()
-
 
 
 class Auto {
     
-    //atributos
+    var velocidad = Velocidades.init(velocidadInicial: Velocidades.Apagado)
     
-    var velocidad = Velocidades()
-    
-    //*funcion de inicializador para dar valores a los atributos
-    
-    init ( Apagado : Int){
-        self.Apagado = 0
+    // inicializamos en apagado
+    init(){
+        self.velocidad = Velocidades.Apagado
     }
     
-    //función actualiza uno de mis atributos pero no retorna nada
-    func cambioDeVelocidad(var actual : Int, velocidadEnCadena : String ){
-        if actual == 0 {
-            print(actual)
-            print("Apagado")
-            return actual=20
-        }
+    
+    //función cambio de velocidad
+    func cambioDeVelocidad() -> (actual: Int, velocidadEnCadena: String){
         
-        if actual == 20 {
-            print(actual)
-            print("Velocidad baja")
-            return actual=50
-        }
+        //recupero el valor inicial
+        let valorActual = velocidad.rawValue
+    
         
-        if actual == 50 {
-            print(actual)
-            print("Velocidad media")
-            return actual=120
-        }
-        
-        if actual == 120 {
-            print(actual)
-            print("Velocidad alta")
-            return actual=50
+        switch valorActual{
+        case 0:
+            self.velocidad = Velocidades.VelocidadBaja
+            return (0, "Apagado")
+        case 20:
+            self.velocidad = Velocidades.VelocidadMedia
+            return (20, "Velocidad baja")
+        case 50:
+            self.velocidad = Velocidades.VelocidadAlta
+            return (50, "Velocidad media")
+        case 120:
+            self.velocidad = Velocidades.VelocidadMedia
+            return (120, "Velocidad alta")
+        default:
+            return (99,"ERROR")
         }
     }
 }
 
-
-var auto = Auto(Apagado: 0)
-
-
-
-var vueltas = 1...20
-
-for ciclo in vueltas{
+var auto = Auto()
     
-    Auto.cambioDeVelocidad(actual:0)
-    
+for i in 1..<21{
+   print ("\(i). \(auto.cambioDeVelocidad())")
 }
-
